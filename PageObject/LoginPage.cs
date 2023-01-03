@@ -1,13 +1,15 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using SeleniumExtras.PageObjects;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace HudlLoginTest.PageObject
 {
-    public class LoginPage
+    public class LoginPage : WaitForElement
     {
 
         private IWebDriver _driver;
@@ -19,52 +21,48 @@ namespace HudlLoginTest.PageObject
             baseURL = ConfigurationManager.AppSettings["BaseURL"];
         }
 
-        public void goToPage()
+        public void goToPage(string link)
         {
-            _driver.Navigate().GoToUrl(baseURL + "login");
+            _driver.Navigate().GoToUrl(baseURL + link);
         }
 
-        [FindsBy(How = How.ClassName, Using = "login-container")]
-        public IWebElement LoginArea { get; set; }
+        public IWebElement LogInTitle => _driver.FindElement(By.XPath("//title['Log In']"));
 
-        [FindsBy(How = How.Id, Using = "email")]
-        public IWebElement Username { get; set; }
+        public IWebElement LoginArea => _driver.FindElement(By.ClassName("login-container"));
 
-        [FindsBy(How = How.CssSelector, Using = "[id='password']")]
-        public IWebElement Password { get; set; }
+        public IWebElement Username => _driver.FindElement(By.XPath("//input[@data-qa-id='email-input']"));
 
-        [FindsBy(How = How.CssSelector, Using = "[id='logIn']")]
-        public IWebElement Login { get; set; }
+        public IWebElement Password => _driver.FindElement(By.XPath("//input[@data-qa-id='password-input']"));
 
-        [FindsBy(How = How.CssSelector, Using = "[data-qa-id='webnav-usermenu-logout']")]
-        public IWebElement Logout { get; set; }
+        public IWebElement Login => _driver.FindElement(By.CssSelector("[id='logIn']"));
 
-        [FindsBy(How = How.CssSelector, Using = "[class='btn__blue login']")]
-        public IWebElement BackToLogin { get; set; }
+        public IWebElement Logout => _driver.FindElement(By.CssSelector("[data-qa-id='webnav-usermenu-logout']"));
 
-        [FindsBy(How = How.Id, Using = "first_name")]
-        public IWebElement FirstName { get; set; }
+        public IWebElement BackToLogin => _driver.FindElement(By.CssSelector("[class='btn__blue login']"));
 
-        [FindsBy(How = How.Id, Using = "save_basic")]
-        public IWebElement SaveChanges { get; set; }
+        public IWebElement FirstName => _driver.FindElement(By.Id("first_name"));
 
-        [FindsBy(How = How.XPath, Using = ".//div[@class='login-error-container']")]
-        public IWebElement LoginError { get; set; }
+        public IWebElement SaveChanges => _driver.FindElement(By.Id("save_basic"));
 
-        [FindsBy(How = How.ClassName, Using = "uni-toast__content")]
-        public IWebElement ConfirmationMessage { get; set; }
+        public IWebElement LoginError => _driver.FindElement(By.CssSelector("[data-qa-id='error-display']"));
 
-        [FindsBy(How = How.CssSelector, Using = "[data-qa-id='webnav-usermenu-yourprofile']")]
-        public IWebElement YourProfile { get; set; }
+        public IWebElement LoginHelp => _driver.FindElement(By.CssSelector("[data-qa-id='login-help-headline']"));
 
-        [FindsBy(How = How.Id, Using = "current_password")]
-        public IWebElement CurrentPassword { get; set; }
+        public IWebElement NeedHelpLink => _driver.FindElement(By.CssSelector("a[data-qa-id='need-help-link']"));
+       
+        public IWebElement ConfirmationMessage => _driver.FindElement(By.ClassName("uni-toast__content"));
 
-        [FindsBy(How = How.Id, Using = "password")]
-        public IWebElement NewPassword { get; set; }
+        public IWebElement ResetEmail => _driver.FindElement(By.CssSelector("[data-qa-id='password-reset-input']"));
+    
+        public IWebElement CurrentPassword => _driver.FindElement(By.Id("current_password"));
 
-        [FindsBy(How = How.Id, Using = "confirm_password")]
-        public IWebElement ConfirmPassword { get; set; }
+        public IWebElement PasswordResetButton => _driver.FindElement(By.CssSelector("[data-qa-id='password-reset-submit-btn']"));
+
+        public IWebElement EmailConfirmation => _driver.FindElement(By.XPath("//div[contains(@class, 'styles_checkEmailContainer')]"));
+
+        public IWebElement NewPassword => _driver.FindElement(By.Id("password"));
+
+        public IWebElement ConfirmPassword => _driver.FindElement(By.Id("confirm_password"));
 
         public void HoverOver(IWebElement elementToHoverOver)
         {
@@ -72,11 +70,9 @@ namespace HudlLoginTest.PageObject
             action.MoveToElement(elementToHoverOver).Perform();
         }
 
-        [FindsBy(How = How.CssSelector, Using = ".hui-globaluseritem")]
-        public IWebElement UserMenu { get; set; }
-
-        [FindsBy(How = How.ClassName, Using = "hui-globaluseritem__email")]
-        public IWebElement EmailInUserMenu { get; set; }
+        public IWebElement UserMenu => _driver.FindElement(By.XPath("//div[@class='hui-globalnav__group']"));
+       
+        public IWebElement EmailInUserMenu => _driver.FindElement(By.XPath("//div[@class='hui-globaluseritem__email']"));
 
         public string EmailAddress
         {
@@ -87,12 +83,13 @@ namespace HudlLoginTest.PageObject
             }
         }
 
-        [FindsBy(How = How.CssSelector, Using = "a.hui-globalusermenu__item>span")]
-        public IList<IWebElement> UserMenuOptions;
+        public IWebElement Profile => _driver.FindElement(By.CssSelector("[data-qa-id='webnav-usermenu-yourprofile']"));
+
+        public IList<IWebElement> UserMenuOptions => _driver.FindElements(By.CssSelector("[data-qa-id='webnav-usermenu-yourprofile']"));
 
         public void SelectFromUserMenu(string menuOption)
         {
-            HoverOver(UserMenu);
+            UserMenu.Click();
             UserMenuOptions.ToList().First(option => option.Text == menuOption).Click();
         }
 

@@ -46,7 +46,7 @@
             },
             "FluentAssertions": {
               "target": "Package",
-              "version": "[6.2.0, )"
+              "version": "[6.8.0, )"
             },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
@@ -55,6 +55,10 @@
             "NUnit3TestAdapter": {
               "target": "Package",
               "version": "[4.1.0, )"
+            },
+            "Selenium.Support": {
+              "target": "Package",
+              "version": "[4.7.0, )"
             },
             "SpecFlow.Assist.Dynamic": {
               "target": "Package",

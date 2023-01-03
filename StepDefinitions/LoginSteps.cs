@@ -7,32 +7,35 @@ namespace HudlLoginTest.ScenarioSteps
     [Binding]
     public class LoginSteps
     {
-        private LoginPage _loginPage;
+        private LoginPage _loginPage;  
 
         public LoginSteps(LoginPage loginPage)
         {
             _loginPage = loginPage;
         }
 
-        [Given(@"I have navigated to the Hudl website")]
+        [Given(@"I have navigated to the Hudl login page")]
         public void GivenIHaveNavigatedToTheHudlWebsite()
         {
-            _loginPage.goToPage();
+            _loginPage.goToPage("login");
+            _loginPage.LogInTitle.Text.Equals("Log In");
         }
 
         [When(@"I login to Hudl as user (.*) with password (.*)")]
         [Given(@"I have logged into Hudl as user (.*) with password (.*)")]
+        [Given(@"I have tried to login into Hudl as user (.*) with password (.*)")]
         public void GivenILoginToHudlAsUserWithPassword(string name, string password)
         {
             _loginPage.Username.SendKeys(name);
             _loginPage.Password.SendKeys(password);
+            _loginPage.LogInTitle.Text.Equals("Log In");
             _loginPage.Login.Click();
-
         }
 
         [When(@"I select (.*) option from the drop down menu")]
         public void WhenISelectYourProfileFromTheDropDown(string value)
         {
+            _loginPage.UserMenu.Equals(true);
             _loginPage.SelectFromUserMenu(value);
         }
 
@@ -41,7 +44,6 @@ namespace HudlLoginTest.ScenarioSteps
         {
             _loginPage.FirstName.Clear();
             _loginPage.FirstName.SendKeys(field);
-
         }
 
         [When(@"I save the changes")]
@@ -50,24 +52,53 @@ namespace HudlLoginTest.ScenarioSteps
             _loginPage.SaveChanges.Click();
         }
 
+        [When(@"I click Need Help link")]
+        public void WhenIClickNeedHelpLink()
+        {
+            _loginPage.LogInTitle.Text.Equals("Log In");
+            _loginPage.NeedHelpLink.Click();
+        }
+
         [Then(@"confirmation message '(.*)' is displayed")]
         public void ThenConfirmationMessageIsDisplayed(string message)
         {
             _loginPage.ConfirmationMessage.Text.Equals(message);
         }
 
+        [When(@"error message '(.*)' is displayed")]
         [Then(@"error message '(.*)' is displayed")]
         public void ThenErrorMessageIsDisplayed(string error)
         {
             _loginPage.LoginError.Text.Equals(error);
         }
 
+        [Then(@"I am successfully redirected to Help Page")]
+        public void ThenIAmAbleToResetMyPasswordViaHelpPage()
+        {
+            _loginPage.LoginHelp.Equals(true);
+            _loginPage.ResetEmail.Equals(true);
+        }
+
+        [When(@"I enter the email '(.*)' and confirm")]
+        public void WhenIEnterTheEmail(string email)
+        {
+            _loginPage.ResetEmail.Click();
+            _loginPage.ResetEmail.SendKeys(email);
+            _loginPage.PasswordResetButton.Click();
+        }
+
+        [Then(@"confirmation message saying Check Your Email is displayed")]
+        public void ThenConfirmationMessageSayingCheckYourEmailIsDisplayed()
+        {
+            _loginPage.EmailConfirmation.Equals(true);
+        }
+
         [Then(@"the email address in the user menu is '(.*)'")]
         public void ThenMyEmailAddressInTheUserMenuIs(string expected)
         {
-            _loginPage.EmailAddress.Should().Be(expected, $"email address of the logged in user is '{expected}'");
+            _loginPage.UserMenu.Equals(true);
+            _loginPage.EmailInUserMenu.Text.Equals(expected);
         }
-
 
         [Then(@"I am able to navigate back to Login page")]
         public void ThenIAmAbleToNavigateBackToLoginPage()

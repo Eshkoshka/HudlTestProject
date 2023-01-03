@@ -1,22 +1,21 @@
 ﻿@UI
 Feature: LoginToHudl
-	In order to provide user access to Hudle website
+	In order to provide user access to Hudl website
 	As a coach
 	I want to be able to login to Hudl to access my account
 
 Background: 
-Given I have navigated to the Hudl website
+Given I have navigated to the Hudl login page
 
 Scenario: Check the user is logged in correctly
 When I login to Hudl as user k.dlabalova@gmail.com with password Hudlepassword123
 Then the email address in the user menu is 'k.dlabalova@gmail.com'
 
-Scenario: Must to be able to change the account information
-Given I have logged into Hudl as user k.dlabalova@gmail.com with password Hudlepassword123
-When I select Your Profile option from the drop down menu
-And I update the First Name to 'Chris'
-And I save the changes
-Then confirmation message 'Profile successfully updated' is displayed
+Scenario: Must to be able to reset user details
+When I click Need Help link
+Then I am successfully redirected to Help Page
+When I enter the email 'k.dlabalova@gmail.com' and confirm
+Then confirmation message saying Check Your Email is displayed
 
 Scenario Outline: Verify login with incorrect password or username
 When I login to Hudl as user <Username> with password <Password>

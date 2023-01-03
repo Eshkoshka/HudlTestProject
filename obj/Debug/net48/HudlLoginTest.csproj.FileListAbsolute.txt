@@ -34,3 +34,4 @@ C:\Users\kicki\source\repos\HudlLoginTest\HudlLoginTest\obj\Debug\net48\HudlLogi
 C:\Users\kicki\source\repos\HudlLoginTest\HudlLoginTest\obj\Debug\net48\HudlLoginTest.csproj.CopyComplete
 C:\Users\kicki\source\repos\HudlLoginTest\HudlLoginTest\obj\Debug\net48\HudlLoginTest.dll
 C:\Users\kicki\source\repos\HudlLoginTest\HudlLoginTest\obj\Debug\net48\HudlLoginTest.pdb
+C:\Users\kicki\source\repos\HudlLoginTest\HudlLoginTest\bin\Debug\net48\WebDriver.Support.dll
