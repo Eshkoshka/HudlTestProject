@@ -11,7 +11,7 @@
 + C# language
 + utilises Page Object Model pattern
 
-##How to run in Visual Studio
+#How to run in Visual Studio
 1. Install Visual Studio 2022 (Should install .Net 6 automatically)
 2. Install NuGet (package manager). http://docs.nuget.org/consume/package-manager-dialog#managing-packages-for-the-solution
 3. Connect to github project and clone project locally 
@@ -28,12 +28,12 @@
   * Check the chrome browser is version 108x
  6. Run test via Test Explorer
    
-##Run from Command Line Prompt
+#Run from Command Line Prompt
 1. Connect to github project and clone project locally 
 2. Navigate to the Project folder on your local machine 
 3. Inside the folder ...\HudlLoginTest\HudlLoginTest open CMD
 4. Write the following "dotnet test"
 
-## Notes:
+# Notes:
 + The Hooks class contains code which runs before and after scenarios (and can be expanded to use other annotations)
 + The reason for using C# and not Python is due to extended experience in setting up frameworks in C#
