@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using HudlLoginTest.PageObject;
+﻿using HudlLoginTest.PageObject;
 using TechTalk.SpecFlow;
 
 namespace HudlLoginTest.ScenarioSteps
@@ -32,11 +31,12 @@ namespace HudlLoginTest.ScenarioSteps
             _loginPage.Login.Click();
         }
 
-        [When(@"I select (.*) option from the drop down menu")]
-        public void WhenISelectYourProfileFromTheDropDown(string value)
+        [When(@"I select Log out from the user menu")]
+        public void WhenISelectYourProfileFromTheDropDown()
         {
             _loginPage.UserMenu.Equals(true);
-            _loginPage.SelectFromUserMenu(value);
+            _loginPage.UserMenu.Click();
+            _loginPage.Logout.Click();
         }
 
         [When(@"I update the First Name to '(.*)'")]
@@ -100,14 +100,11 @@ namespace HudlLoginTest.ScenarioSteps
             _loginPage.EmailInUserMenu.Text.Equals(expected);
         }
 
-        [Then(@"I am able to navigate back to Login page")]
-        public void ThenIAmAbleToNavigateBackToLoginPage()
+        [Then(@"the Hudl home page is displayed")]
+        public void ThenTheHudlHomePageIsDisplayed()
         {
-            _loginPage.BackToLogin.Click();
-            _loginPage.LoginArea.Should().NotBeNull();
-
+            _loginPage.HomePage.Equals(true);
         }
-
     }
 
 }

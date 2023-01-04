@@ -23,5 +23,6 @@
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgBoDi Condition=" '$(PkgBoDi)' == '' ">C:\Users\kicki\.nuget\packages\bodi\1.5.0</PkgBoDi>
+    <PkgNUnit_ConsoleRunner Condition=" '$(PkgNUnit_ConsoleRunner)' == '' ">C:\Users\kicki\.nuget\packages\nunit.consolerunner\3.16.0</PkgNUnit_ConsoleRunner>
   </PropertyGroup>
 </Project>

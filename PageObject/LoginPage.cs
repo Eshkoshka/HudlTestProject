@@ -26,6 +26,8 @@ namespace HudlLoginTest.PageObject
             _driver.Navigate().GoToUrl(baseURL + link);
         }
 
+        public IWebElement HomePage => _driver.FindElement(By.CssSelector("[title = 'Home']"));
+
         public IWebElement LogInTitle => _driver.FindElement(By.XPath("//title['Log In']"));
 
         public IWebElement LoginArea => _driver.FindElement(By.ClassName("login-container"));
@@ -70,7 +72,7 @@ namespace HudlLoginTest.PageObject
             action.MoveToElement(elementToHoverOver).Perform();
         }
 
-        public IWebElement UserMenu => _driver.FindElement(By.XPath("//div[@class='hui-globalnav__group']"));
+        public IWebElement UserMenu => _driver.FindElement(By.XPath("//div[@class='hui-globalusermenu']"));
        
         public IWebElement EmailInUserMenu => _driver.FindElement(By.XPath("//div[@class='hui-globaluseritem__email']"));
 
@@ -85,7 +87,7 @@ namespace HudlLoginTest.PageObject
 
         public IWebElement Profile => _driver.FindElement(By.CssSelector("[data-qa-id='webnav-usermenu-yourprofile']"));
 
-        public IList<IWebElement> UserMenuOptions => _driver.FindElements(By.CssSelector("[data-qa-id='webnav-usermenu-yourprofile']"));
+        public IList<IWebElement> UserMenuOptions => _driver.FindElements(By.XPath("//div[@class='hui-globalusermenu__items']//div"));
 
         public void SelectFromUserMenu(string menuOption)
         {

@@ -30,8 +30,8 @@ Examples:
 
 Scenario: Must able to logout successfully
 Given I have logged into Hudl as user k.dlabalova@gmail.com with password Hudlepassword123
-When I select Log Out option from the drop down menu
-Then I am able to navigate back to Login page
+When I select Log out from the user menu
+Then the Hudl home page is displayed
 
 
 

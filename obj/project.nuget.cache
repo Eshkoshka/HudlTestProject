@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "f6YHAAcsV8La87EJMNgyr27bpEaFfVjZ82/Ltvy71fQFMfgbtj5SmOT4EVhP1hXC78bKMqgug1HWKRL4WlHAbQ==",
+  "dgSpecHash": "GTAiukCddDKRwEqbIkiOqrwYvTB0iCtEiks5F+/K4v2XIR+wtCx+vm4sft/uqyribMSFRnbfuojJxngL2ck7Wg==",
   "success": true,
   "projectFilePath": "C:\\Users\\kicki\\source\\repos\\HudlLoginTest\\HudlLoginTest\\HudlLoginTest.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\kicki\\.nuget\\packages\\microsoft.codecoverage\\17.0.0\\microsoft.codecoverage.17.0.0.nupkg.sha512",
     "C:\\Users\\kicki\\.nuget\\packages\\microsoft.net.test.sdk\\17.0.0\\microsoft.net.test.sdk.17.0.0.nupkg.sha512",
     "C:\\Users\\kicki\\.nuget\\packages\\nunit\\3.13.2\\nunit.3.13.2.nupkg.sha512",
+    "C:\\Users\\kicki\\.nuget\\packages\\nunit.consolerunner\\3.16.0\\nunit.consolerunner.3.16.0.nupkg.sha512",
     "C:\\Users\\kicki\\.nuget\\packages\\nunit3testadapter\\4.1.0\\nunit3testadapter.4.1.0.nupkg.sha512",
     "C:\\Users\\kicki\\.nuget\\packages\\selenium.support\\4.7.0\\selenium.support.4.7.0.nupkg.sha512",
     "C:\\Users\\kicki\\.nuget\\packages\\selenium.webdriver\\4.7.0\\selenium.webdriver.4.7.0.nupkg.sha512",
