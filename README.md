@@ -13,7 +13,7 @@
 
 # How to run in Visual Studio
    1. Install Visual Studio 2022 (Should install .Net 6 automatically)
-   2. Install NuGet (package manager). http://docs.nuget.org/consume/package-manager-dialog#managing-packages-for-the-solution
+   2. Install NuGet (package manager)
    3. Connect to github project and clone project locally 
    4. The following should be installed automatically when project is cloned:
        NuGet (Project > Manage NuGet packages) to install Specflow, Nunit and Selenium:
@@ -22,7 +22,7 @@
       * NUnitTestAdaptor
       * SpecFlow
        * Specflow.NUnit
-       * Selenuium http://nugetmusthaves.com/Tag/selenium
+       * Selenuium
       * Selenium support package   
    5. Download chrome 
       * Check the chrome browser is version 108x
