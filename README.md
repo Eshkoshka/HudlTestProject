@@ -32,7 +32,8 @@
    1. Connect to github project and clone project locally 
    2. Navigate to the Project folder on your local machine 
    3. Inside the folder ...\HudlLoginTest\HudlLoginTest open CMD
-   4. Write the following "dotnet test"
+   4. Write the following "dotnet test" --> This should prompt the Chrome browser
+   --> If any issue with the driver, please check the Chrome browser is version 108x
 
 # Notes:
 + The Hooks class contains code which runs before and after scenarios (and can be expanded to use other annotations)
